@@ -1,24 +1,24 @@
 <template lang="html">
   <div>
-    <Navbar></Navbar>
+    <!-- <Navbar></Navbar> -->
     <Header></Header>
     <Center></Center>
-    <Footer></Footer>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 
 <script>
-  import Navbar from '../components/home/Navbar.vue';
+  // import Navbar from '../components/home/Navbar.vue';
   import Header from '../components/home/Header.vue';
   import Center from '../components/home/Center.vue';
-  import Footer from '../components/home/Footer.vue';
+  // import Footer from '../components/home/Footer.vue';
 
   export default {
     components: {
-      'Navbar': Navbar,
+      // 'Navbar': Navbar,
       'Header': Header,
-      'Center': Center,
-      'Footer': Footer
+      'Center': Center
+      // 'Footer': Footer
     }
   }
 </script>

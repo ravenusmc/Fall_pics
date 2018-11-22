@@ -1,7 +1,7 @@
 <template>
   <div class='header_div'>
     <div class='header_box'>
-      <h1 class='center'>The Fall</h1>
+      <h1 class='center'>Fall</h1>
       <hr>
       <h3>Pictures to bring calmness</h3>
     </div>
