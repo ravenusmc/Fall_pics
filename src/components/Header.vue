@@ -1,7 +1,7 @@
 <template>
   <div class='header_div'>
-    <div>
-      <h1>The Fall</h1>
+    <div class='header_box'>
+      <h1 class='center'>The Fall</h1>
       <hr>
       <h3>Pictures to bring calmness</h3>
     </div>
@@ -21,6 +21,23 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../assets/img/fall_header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
+
+  .header_box {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgba(255, 0, 0, 0.4);
+  }
+
+  .center {
+    text-align: center;
+  }
+
+
 
 </style>
