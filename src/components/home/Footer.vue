@@ -21,9 +21,10 @@
 <style>
 
   footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    border-top: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
 </style>

@@ -9,9 +9,9 @@
 </template>
 
 <script>
-export default {
+  export default {
 
-}
+  }
 </script>
 
 <style>
@@ -21,7 +21,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/img/fall_header.jpg');
+    background-image: url('../../assets/img/fall_header.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
