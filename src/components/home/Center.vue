@@ -1,6 +1,11 @@
 <template lang="html">
   <div>
     <h1 class='center'>The Fall</h1>
+    <section>
+      <div>
+
+      </div>
+    </section>
   </div>
 </template>
 
@@ -9,5 +14,5 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 </style>
