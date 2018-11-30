@@ -14,6 +14,46 @@
       </div>
 
     </section>
+
+    <section class='middle_section'>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+      <div>
+        <p>Hi</p>
+      </div>
+
+    </section>
   </div>
 </template>
 
@@ -28,6 +68,12 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     border: 2px solid blue;
+  }
+
+  .middle_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 
 </style>
