@@ -17,8 +17,7 @@
 
     <section class='middle_section'>
 
-      <div>
-        <p>Hi</p>
+      <div class='pic_one'>
       </div>
 
       <div>
@@ -67,13 +66,25 @@ export default {
   .top_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 2px solid blue;
   }
 
   .middle_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .middle_section div {
+    border: 2px solid blue;
+    height: 400px
+  }
+
+  /* CSS for the pictures */
+  .pic_one {
+    background-image: url('../../assets/img/leaves1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
 </style>
