@@ -145,6 +145,15 @@ export default {
     background-size: cover;
   }
 
-  @media only all and (max-width:)
+  @media only all and (max-width: 768px){
+
+      .top_section {
+        grid-template-columns: 1fr;
+      }
+
+      .middle_section {
+        grid-template-columns: 1fr;
+      }
+  }
 
 </style>
