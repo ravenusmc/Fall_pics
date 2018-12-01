@@ -20,27 +20,29 @@
       <div class='pic_one'>
       </div>
 
-      <div>
-        <p>Life starts all over again when it gets crisp in the fall.</p>
+      <div class='quote_div'>
+        <p class='quote_style'>Life starts all over again <br/> when it gets crisp in the fall.</p>
       </div>
 
       <div class='pic_two'>
       </div>
 
-      <div>
-        <p>Every leaf speaks bliss to me, fluttering from the autumn tree.</p>
+      <div class='quote_div'>
+        <p class='quote_style'>Every leaf speaks bliss to me, <br/> fluttering from the autumn tree.</p>
       </div>
 
       <div class='pic_three'>
       </div>
 
-      <div>
+      <div class='quote_div'>
+        <p class='quote_style'>Autumn is a second spring <br/> when every leaf is a flower.</p>
       </div>
 
       <div class='pic_four'>
       </div>
 
-      <div>
+      <div class='quote_div'>
+        <p class='quote_style'>Every leaf speaks bliss to me, <br/> fluttering from the autumn tree.</p>
       </div>
 
       <div class='pic_five'>
@@ -76,6 +78,11 @@ export default {
     border-radius: 50px;
     border: 2px solid black;
     margin: 20px;
+    background-color: #BD3D3A;
+  }
+
+  .nav-link {
+    color: #D5AE41;
   }
 
   .middle_section {
@@ -88,6 +95,18 @@ export default {
   .middle_section div {
     height: 400px;
     border: 1px dashed black;
+  }
+
+  .quote_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .quote_style {
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
   }
 
   /* CSS for the pictures */
@@ -125,5 +144,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  @media only all and (max-width:)
 
 </style>
