@@ -1,16 +1,16 @@
 <template lang="html">
   <div>
-    <h1 class='center'>The Fall</h1>
+    <h1 class='heading center'>The Season of Fall</h1>
     <section class='top_section'>
 
-      <div>
+      <div class='top_section_div'>
         <h3 class='center'><router-link class="nav-link" to="/about">About Me</router-link></h3>
-        <p>Learn more about me and my journey with coding.</p>
+        <p class='center'>Learn more about me and my journey with coding.</p>
       </div>
 
-      <div>
+      <div class='top_section_div'>
         <h3 class='center'><router-link class="nav-link" to="/gallery">Gallery</router-link></h3>
-        <p>Experience Some nice fall photo's simply sit back and relax as you click throw them.</p>
+        <p class='center'>Experience Some nice fall photo's simply sit back and relax as you click throw them.</p>
       </div>
 
     </section>
@@ -21,12 +21,14 @@
       </div>
 
       <div>
+        <p>Life starts all over again when it gets crisp in the fall.</p>
       </div>
 
       <div class='pic_two'>
       </div>
 
       <div>
+        <p>Every leaf speaks bliss to me, fluttering from the autumn tree.</p>
       </div>
 
       <div class='pic_three'>
@@ -55,19 +57,37 @@ export default {
 
 <style lang="css" scoped>
 
+  .center {
+    text-align: center;
+  }
+
+  .heading {
+    margin-top: 25px;
+  }
+
   .top_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  .top_section_div {
+    border-radius: 50px;
+    border: 2px solid black;
+    margin: 20px;
   }
 
   .middle_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    border-top: 1px dashed black;
   }
 
   .middle_section div {
-    height: 400px
+    height: 400px;
+    border: 1px dashed black;
   }
 
   /* CSS for the pictures */
