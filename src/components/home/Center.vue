@@ -21,35 +21,27 @@
       </div>
 
       <div>
-        <p>Hi</p>
+      </div>
+
+      <div class='pic_two'>
       </div>
 
       <div>
-        <p>Hi</p>
+      </div>
+
+      <div class='pic_three'>
       </div>
 
       <div>
-        <p>Hi</p>
+      </div>
+
+      <div class='pic_four'>
       </div>
 
       <div>
-        <p>Hi</p>
       </div>
 
-      <div>
-        <p>Hi</p>
-      </div>
-
-      <div>
-        <p>Hi</p>
-      </div>
-
-      <div>
-        <p>Hi</p>
-      </div>
-
-      <div>
-        <p>Hi</p>
+      <div class='pic_five'>
       </div>
 
     </section>
@@ -75,13 +67,40 @@ export default {
   }
 
   .middle_section div {
-    border: 2px solid blue;
     height: 400px
   }
 
   /* CSS for the pictures */
   .pic_one {
     background-image: url('../../assets/img/leaves1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pic_two {
+    background-image: url('../../assets/img/leaves2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pic_three {
+    background-image: url('../../assets/img/leaves3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pic_four {
+    background-image: url('../../assets/img/leaves4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pic_five {
+    background-image: url('../../assets/img/leaves5.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
