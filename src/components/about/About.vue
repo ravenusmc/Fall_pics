@@ -13,7 +13,7 @@
       <div class='about_image'>
       </div>
 
-      <div>
+      <div class='bio_div'>
         <p>
           In the spring of 2015, I chose to take a leap in a new direction and
           immerse myself in learning full stack web development. I attended the
@@ -79,19 +79,25 @@ export default {
   .about_content_area {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-bottom: 50px;
   }
 
   .about_image {
     background-image: url(../../assets/img/Cuddy.jpg);
-    height: 500px;
-    width: 500px;
+    height: 475px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 25%;
+  }
+
+  @media only all and (max-width: 768px) {
+
+    .about_content_area {
+      grid-template-columns: 1fr;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+
   }
 
 </style>
