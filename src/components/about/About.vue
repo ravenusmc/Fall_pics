@@ -47,10 +47,6 @@
           so feel free to send me an invite; I’d love to connect with you.
         </p>
 
-        <p>
-          Former Marine Corps/CIA Officer. I served in Iraq and Afghanistan.
-        </p>
-
       </div>
 
     </div>
@@ -79,7 +75,10 @@ export default {
   .about_content_area {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
     margin-bottom: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .about_image {
