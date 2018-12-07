@@ -3,24 +3,36 @@
   <h1 class='center'>Gallery Page</h1>
 
     <div class='gallery_area'>
+
+      API to use: https://www.npmjs.com/package/pexels-api-wrapper
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
       <div>
       </div>
+
     </div>
 
   </div>
