@@ -4,52 +4,56 @@
 
     <div class='gallery_area' v-for="pic in pics">
 
-    
-
+      <div>
+        {{ pic }}
+      </div>
 
     </div>
 
   </div>
-
 </template>
 
 <script>
   //Importing the API Key
   import KEY from './test.js'
+  import axios from 'axios';
   //requiring the pexels library
   const PexelsAPI = require('pexels-api-wrapper');
   let pexelsClient = new PexelsAPI(KEY.KEY);
 
-  // pexelsClient.getPopularPhotos(9, 1)
-  //     .then(function(result){
-  //         console.log(result.photos[0].url);
-  //     }).
-  //     catch(function(e){
-  //         console.err(e);
-  //     });
+        // pexelsClient.getPopularPhotos(9, 1)
+        // .then(function(result){
+        //     console.log(result.photos[0].url);
+        // }).
+        // catch(function(e){
+        //     console.err(e);
+        // });
 
 
   export default {
     name: 'Gallery',
     data() {
       return {
-        pics: [],
+        pics: [1,2],
         count: 0
       }
     },
-    mounted(){
+    // mounted() {
+    //   axios.get("https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1")
+    //       .then(response => {
+    //         this.results = response.data.results
+    //         console.log(this.results)
+    //       })
+    //
+    // }
+    mounted() {
+      console.log(this.count)
+      console.log(this.pics)
       pexelsClient.getPopularPhotos(9, 1)
           .then(function(result){
-              while (this.count < 10) {
-                let pic = result.photos[0].url
-                this.pics.push(pic);
-                this.count++;
-              }
-              console.log();
-          }).
-          catch(function(e){
-              console.err(e);
-        });
+            console.log(result.photos[0].url);
+          })
+      console.log(result)
     }
   }
 
