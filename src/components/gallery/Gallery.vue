@@ -1,13 +1,14 @@
 <template lang="html">
   <div>
-  <h1 class='center'>Gallery Page</h1>
 
-    <div class='gallery_area' v-for="pic in pics">
+    <div class='header'>
+      <h1 class='center'>Gallery Page</h1>
+    </div>
 
-      <div>
-        {{ pic }}
+    <div class='gallery_area'>
+      <div v-for="picture in pictures">
+          <img :src="picture">
       </div>
-
     </div>
 
   </div>
@@ -16,60 +17,76 @@
 <script>
   //Importing the API Key
   import KEY from './test.js'
-  import axios from 'axios';
+  //import axios from 'axios';
   //requiring the pexels library
   const PexelsAPI = require('pexels-api-wrapper');
   let pexelsClient = new PexelsAPI(KEY.KEY);
 
-        // pexelsClient.getPopularPhotos(9, 1)
-        // .then(function(result){
-        //     console.log(result.photos[0].url);
-        // }).
-        // catch(function(e){
-        //     console.err(e);
-        // });
-
-
-  export default {
+  export default { //Start of Vue instance
     name: 'Gallery',
     data() {
       return {
-        pics: [1,2],
-        count: 100
+        pictures: [],
+        count: 0
       }
     },
-    // mounted() {
-    //   axios.get("https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1")
-    //       .then(response => {
-    //         this.results = response.data.results
-    //         console.log(this.results)
-    //       })
-    //
-    // }
-    mounted() {
-      console.log(this.count)
+    mounted() { // Start of mounted function
       console.log(this.pics)
-      let test = this.count;
       pexelsClient.getPopularPhotos(10, 1)
-          .then(function(result){
-              console.log(test);
-              console.log(result.photos[0].url);
-              return result;
-          })
-          // console.log(result);
+        .then((result) => {
+          console.log(result)
+          let counter = this.count;
+          let pics = this.pictures;
+          while (counter < 9) {
+            pics.push(result.photos[counter].src.medium);
+            counter++;
+          }
+          this.pictures = pics;
+      })
     }//End of mounted function
   }//End of Vue instance
 
 </script>
 
 <style lang="css" scoped>
+
   .center {
     text-align: center;
   }
 
+  .header {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
   .gallery_area {
-    grid-template-columns: ;
-    grid-template-rows: ;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+    margin-bottom: 10px;
+  }
+
+  img {
+    height: 300px;
+    width: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid black;
+  }
+
+  @media only all and (max-width: 1100px){
+
+    .gallery_area {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only all and (max-width: 768px){
+
+    .gallery_area {
+      grid-template-columns: 1fr;
+    }
   }
 
 </style>
