@@ -17,9 +17,9 @@
 <script>
   //Importing the API Key
   import KEY from './test.js'
-  //import axios from 'axios';
   //requiring the pexels library
   const PexelsAPI = require('pexels-api-wrapper');
+  //Setting up the call to the pexels API.
   let pexelsClient = new PexelsAPI(KEY.KEY);
 
   export default { //Start of Vue instance
@@ -31,10 +31,8 @@
       }
     },
     mounted() { // Start of mounted function
-      console.log(this.pics)
       pexelsClient.getPopularPhotos(10, 1)
         .then((result) => {
-          console.log(result)
           let counter = this.count;
           let pics = this.pictures;
           while (counter < 9) {
@@ -63,7 +61,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1em;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-bottom: 10px;
+    justify-content: center;
   }
 
   img {
@@ -86,6 +87,10 @@
 
     .gallery_area {
       grid-template-columns: 1fr;
+    }
+
+    img {
+      width: 300px;
     }
   }
 
