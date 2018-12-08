@@ -2,38 +2,10 @@
   <div>
   <h1 class='center'>Gallery Page</h1>
 
-    <div class='gallery_area'>
+    <div class='gallery_area' v-for="pic in pics">
 
-      API to use: https://www.npmjs.com/package/pexels-api-wrapper
+    
 
-      <h3>{{ pics }}</h3>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
-
-      <div>
-      </div>
 
     </div>
 
@@ -65,22 +37,19 @@
         count: 0
       }
     },
-    computed: {
-      getPics() {
-        pexelsClient.getPopularPhotos(9, 1)
-            .then(function(result){
-                while (this.count < 10) {
-                  pic = result.photos[0].url
-                  this.
-                  this.count++;
-                }
-                console.log();
-            }).
-            catch(function(e){
-                console.err(e);
-            });
-        this.pics = [1,2,3];
-      }
+    mounted(){
+      pexelsClient.getPopularPhotos(9, 1)
+          .then(function(result){
+              while (this.count < 10) {
+                let pic = result.photos[0].url
+                this.pics.push(pic);
+                this.count++;
+              }
+              console.log();
+          }).
+          catch(function(e){
+              console.err(e);
+        });
     }
   }
 

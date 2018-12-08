@@ -1,6 +1,8 @@
 # fall-pics
 
-> A project looking at fall pictures and maybe a few other things
+> A project looking at fall pictures and maybe a few other things. I used the
+following api for the project: Pexels which may be found at the following link:
+https://www.npmjs.com/package/pexels-api-wrapper.
 
 ## Build Setup
 
