@@ -35,7 +35,7 @@
     data() {
       return {
         pics: [1,2],
-        count: 0
+        count: 100
       }
     },
     // mounted() {
@@ -49,13 +49,16 @@
     mounted() {
       console.log(this.count)
       console.log(this.pics)
-      pexelsClient.getPopularPhotos(9, 1)
+      let test = this.count;
+      pexelsClient.getPopularPhotos(10, 1)
           .then(function(result){
-            console.log(result.photos[0].url);
+              console.log(test);
+              console.log(result.photos[0].url);
+              return result;
           })
-      console.log(result)
-    }
-  }
+          // console.log(result);
+    }//End of mounted function
+  }//End of Vue instance
 
 </script>
 
