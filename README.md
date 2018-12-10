@@ -2,7 +2,9 @@
 
 > A project looking at fall pictures and maybe a few other things. I used the
 following api for the project: Pexels which may be found at the following link:
-https://www.npmjs.com/package/pexels-api-wrapper.
+https://www.npmjs.com/package/pexels-api-wrapper. This is my first project using
+the VUE-CLI. It originally was supposed to be a small project but as I learned
+more about VUE I've expanded it out. 
 
 ## Build Setup
 
