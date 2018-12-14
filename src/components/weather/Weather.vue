@@ -25,6 +25,13 @@
 </template>
 
 <script>
+  import * as d3 from "d3";
+
+  //Console.log('Mike');
+
+    d3.csv("../src/components/data/data.csv", function(data) {
+      console.log(data.state);
+    });
 
   export default {
     name: 'Weather'
