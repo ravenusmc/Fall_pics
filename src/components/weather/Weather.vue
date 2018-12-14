@@ -18,6 +18,8 @@
       <div>
         <h2>Graph</h2>
       </div>
+      <vue-csv-import url="../src/components/data/data.csv"
+      :map-fields="['city','state','population','land_area']"></vue-csv-import>
 
     </div>
 
@@ -26,15 +28,23 @@
 
 <script>
   import * as d3 from "d3";
+  import { VueCsvImport } from '../src';
 
   //Console.log('Mike');
 
-    d3.csv("../src/components/data/data.csv", function(data) {
-      console.log(data.state);
+  d3.csv("../src/components/data/data.csv")
+    .then( data => d3.csvParseRows(data) )
+    .then( d => console.log(d) );
+
+  d3.csv("../src/components/data/data.csv", function(data) {
+      console.log(data);
     });
 
   export default {
-    name: 'Weather'
+    name: 'Weather',
+    components: {
+      VueCsvImport
+    }
   }
 
 </script>
