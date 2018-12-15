@@ -16,10 +16,12 @@
     <div>
       <h1 class='center'>Weather Data Graph Area</h1>
       <div>
-        <h2>Graph: {{ name }} {{ test }}</h2>
+        <h2>Graph: {{ name }}</h2>
       </div>
-      <button @click="getData">Click</button>
-      <p>{{ weatherData }}</p>
+      <!-- <button @click="getYearData">Click</button> -->
+      <p>{{ yearData }}</p>
+      <h1>asdad{{ count }}</h1>
+      <button @click='pressed'>Pressed</button>
     </div>
 
   </div>
@@ -33,18 +35,33 @@
     data() {
       return {
         name: this.$store.state.name,
-        test: this.$store.state.test,
-        weatherData: this.$store.state.weatherData
+        yearData: []
+        // weatherData: this.$store.state.yearData
       }
     },
     methods: {
-      ...mapActions([
-        'getData'
-      ]),
-      retrieveData(){
-        alert('tsda')
+      // ...mapActions([
+      //   'getYearData'
+      // ]),
+      pressed() {
+        this.$store.dispatch('increment', 10)
       }
+    },
+    computed: {
+      count(){
+        return this.$store.getters.counter
+      }
+    },
+    created(){
+      this.$store.dispatch('getYearData')
+      this.yearData = this.$store.state.yearData
     }
+    // beforeMount(){
+    //   //this.$store.dispatch('getYearData')
+    // },
+    // created() {
+    //   this.$stote.dispath('increment', 10)
+    // }
   }
 
 </script>

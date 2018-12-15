@@ -7,28 +7,41 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     name: 'Weather Data',
-    test: 'Test',
-    weatherData: []
+    yearData: [],
+    tempData: [],
+    count: 0
   },
   getters: {
-
+    counter(state){
+      return state.count
+    }
   },
   mutations: {
-    settingData: (state, data) => {
-      state.weatherData = data
-      return state.weatherData
+    setYearData(state, data) {
+      state.yearData = data
+    },
+    increment(state, payload) {
+      state.count += payload;
     }
   },
   actions: {
-    getData: ({commit}) => {
-      d3.csv("../src/components/data/data.csv")
+    getYearData: ({commit}) => {
+      d3.csv("../src/components/data/alaska.csv")
         .then(function(data){
-          console.log(data)
-          commit('settingData', data)
+          console.log('fired!!!')
+          let yearData = []
+          for (let i = 0; i < data.length; i++){
+            let day = data[i].AKST
+            yearData.push(day)
+          }
+          console.log(yearData)
+          commit('setYearData', yearData)
         })
+    },
+    increment(state, payload){
+      state.commit('increment', payload)
     }
   }
-
 })
 
 
