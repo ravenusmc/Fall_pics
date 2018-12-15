@@ -20,7 +20,8 @@
       </div>
       <!-- <button @click="getYearData">Click</button> -->
       <p>{{ yearData }}</p>
-      <h1>asdad{{ count }}</h1>
+      <p>{{ tempData }}</p>
+      <h1>{{ count }}</h1>
       <button @click='pressed'>Pressed</button>
     </div>
 
@@ -35,7 +36,8 @@
     data() {
       return {
         name: this.$store.state.name,
-        yearData: []
+        yearData: [],
+        tempData: []
         // weatherData: this.$store.state.yearData
       }
     },
@@ -54,7 +56,9 @@
     },
     created(){
       this.$store.dispatch('getYearData')
+      this.$store.dispatch('getTempData')
       this.yearData = this.$store.state.yearData
+      this.tempData = this.$store.state.tempData
     }
     // beforeMount(){
     //   //this.$store.dispatch('getYearData')

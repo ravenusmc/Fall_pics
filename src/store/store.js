@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
     setYearData(state, data) {
       state.yearData = data
     },
+    setTempData(state, data){
+      state.tempData = data
+    },
     increment(state, payload) {
       state.count += payload;
     }
@@ -36,6 +39,17 @@ export const store = new Vuex.Store({
           }
           console.log(yearData)
           commit('setYearData', yearData)
+        })
+    },
+    getTempData: ({commit}) => {
+      d3.csv("../src/components/data/alaska.csv")
+        .then(function(data){
+          let tempData = []
+          for (let i = 0; i < data.length; i++){
+            let day = data[i].MaxTemperatureF
+            tempData.push(day)
+          }
+          commit('setTempData', tempData)
         })
     },
     increment(state, payload){
