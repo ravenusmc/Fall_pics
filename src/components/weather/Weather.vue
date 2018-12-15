@@ -16,34 +16,34 @@
     <div>
       <h1 class='center'>Weather Data Graph Area</h1>
       <div>
-        <h2>Graph</h2>
+        <h2>Graph: {{ name }} {{ test }}</h2>
       </div>
-      <vue-csv-import url="../src/components/data/data.csv"
-      :map-fields="['city','state','population','land_area']"></vue-csv-import>
-
+      <button @click="getData">Click</button>
+      <p>{{ weatherData }}</p>
     </div>
 
   </div>
 </template>
 
 <script>
-  import * as d3 from "d3";
-  import { VueCsvImport } from '../src';
-
-  //Console.log('Mike');
-
-  d3.csv("../src/components/data/data.csv")
-    .then( data => d3.csvParseRows(data) )
-    .then( d => console.log(d) );
-
-  d3.csv("../src/components/data/data.csv", function(data) {
-      console.log(data);
-    });
+  import { mapActions } from 'vuex';
 
   export default {
     name: 'Weather',
-    components: {
-      VueCsvImport
+    data() {
+      return {
+        name: this.$store.state.name,
+        test: this.$store.state.test,
+        weatherData: this.$store.state.weatherData
+      }
+    },
+    methods: {
+      ...mapActions([
+        'getData'
+      ]),
+      retrieveData(){
+        alert('tsda')
+      }
     }
   }
 
