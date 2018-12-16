@@ -37,7 +37,6 @@ export const store = new Vuex.Store({
             let day = data[i].AKST
             yearData.push(day)
           }
-          console.log(yearData)
           commit('setYearData', yearData)
         })
     },

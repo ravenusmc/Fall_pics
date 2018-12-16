@@ -21,8 +21,8 @@
       <!-- <button @click="getYearData">Click</button> -->
       <p>{{ yearData }}</p>
       <p>{{ tempData }}</p>
-      <h1>{{ count }}</h1>
-      <button @click='pressed'>Pressed</button>
+      <!-- <h1>{{ count }}</h1> -->
+      <!-- <button @click='pressed'>Pressed</button> -->
     </div>
 
   </div>
@@ -30,43 +30,26 @@
 
 <script>
   import { mapActions } from 'vuex';
+  import {mapState} from 'vuex'
 
   export default {
-    name: 'Weather',
-    data() {
-      return {
-        name: this.$store.state.name,
-        yearData: [],
-        tempData: []
-        // weatherData: this.$store.state.yearData
-      }
+      name: 'Weather',
+      data() {
+        return { }
+      },
+    computed:{
+       ...mapState({
+          name: state=>state.name,
+          yearData: state=>state.yearData,
+          tempData: state=>state.tempData
+       })
     },
-    methods: {
-      // ...mapActions([
-      //   'getYearData'
-      // ]),
-      pressed() {
-        this.$store.dispatch('increment', 10)
-      }
-    },
-    computed: {
-      count(){
-        return this.$store.getters.counter
-      }
-    },
-    created(){
+    beforeMount(){
       this.$store.dispatch('getYearData')
       this.$store.dispatch('getTempData')
-      this.yearData = this.$store.state.yearData
-      this.tempData = this.$store.state.tempData
     }
-    // beforeMount(){
-    //   //this.$store.dispatch('getYearData')
-    // },
-    // created() {
-    //   this.$stote.dispath('increment', 10)
-    // }
   }
+
 
 </script>
 
