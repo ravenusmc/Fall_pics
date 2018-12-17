@@ -4,44 +4,50 @@
     <div class='header'>
       <h1>Weather Page</h1>
       <p>Examine Weather Data Here</p>
-      <p>Please select a year</p>
-      <select>
-        <option value="2009">2009</option>
-        <option value="2010">2010</option>
-        <option value="2011">2011</option>
-        <option value="2012">2012</option>
-      </select>
     </div>
 
     <div>
       <h1 class='center'>Weather Data Graph Area</h1>
-      <div>
-        <h2>Graph: {{ name }}</h2>
+      <div class='graph_area'>
+        <VueChartist
+          type="Line"
+          :data="data"
+          :options="options" >
+        </VueChartist>
       </div>
-      <!-- <button @click="getYearData">Click</button> -->
-      <p>{{ yearData }}</p>
-      <p>{{ tempData }}</p>
-      <!-- <h1>{{ count }}</h1> -->
-      <!-- <button @click='pressed'>Pressed</button> -->
-    </div>
 
+      <!-- <p>{{ yearData }}</p>
+      <p>{{ tempData }}</p>
+      <p>{{ data.labels }}</p>
+      <p>{{ data.series[0].data }}</p> -->
+    </div>
   </div>
 </template>
 
 <script>
   import { mapActions } from 'vuex';
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex';
+  import VueChartist from 'v-chartist'
 
   export default {
       name: 'Weather',
-      data() {
-        return { }
+      components: {
+        'VueChartist': VueChartist
       },
-    computed:{
-       ...mapState({
+      data() {
+        return {
+          options: {
+                   width: 1200,
+                   height: 1000
+               },
+        }
+      },
+      computed:{
+        ...mapState({
           name: state=>state.name,
           yearData: state=>state.yearData,
-          tempData: state=>state.tempData
+          tempData: state=>state.tempData,
+          data: state=>state.data,
        })
     },
     beforeMount(){
@@ -49,7 +55,6 @@
       this.$store.dispatch('getTempData')
     }
   }
-
 
 </script>
 
@@ -63,5 +68,20 @@
     margin-top: 50px;
     text-align: center;
   }
+
+  .graph_area {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+  }
+
+  .ct-series-a .ct-line {
+  /* Set the colour of this series line */
+  stroke: blue;
+  /* Control the thikness of your lines */
+  stroke-width: 3px;
+  /* Create a dashed line with a pattern */
+  stroke-dasharray: 10px 20px;
+}
 
 </style>

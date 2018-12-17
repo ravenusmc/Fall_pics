@@ -7,7 +7,18 @@
 
     <div class='gallery_area'>
       <div v-for="picture in pictures">
-          <img :src="picture">
+          <img class='gallery_images' :src="picture">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class='image_search_div'>
+      <h1 class='center'>Search Photo Area</h1>
+      <input v-model='search' placeholder="Enter Search Term">
+      <button class='search_pic_button' @click='submitSearch'>Submit</button>
+      <div v-if="search_pic">
+        <img class='seach_pic_image' :src='search_pic'>
       </div>
     </div>
 
@@ -27,9 +38,20 @@
     data() {
       return {
         pictures: [],
-        count: 0
+        count: 0,
+        search: '',
+        search_pic: ''
       }
     },
+    methods: { //Start of methods section
+      submitSearch() {
+        pexelsClient.search(this.search, 1, 1)
+          .then((result) => {
+            console.log(result)
+              this.search_pic = result.photos[0].src.large;
+          })
+      }
+    }, //End of methods section
     mounted() { // Start of mounted function
       pexelsClient.getPopularPhotos(10, 1)
         .then((result) => {
@@ -67,13 +89,33 @@
     justify-content: center;
   }
 
-  img {
+  .gallery_images {
     height: 300px;
     width: 400px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border: 2px solid black;
+  }
+
+  /* CSS for the image search area */
+  .image_search_div {
+    display: flex;
+    flex-direction: column;
+    flex-direction: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .seach_pic_image {
+    height: 650;
+    width: 940;
+    margin-top: 50px;
+  }
+
+  .search_pic_button {
+    margin-top: 10px;
+    background-color: blue;
   }
 
   @media only all and (max-width: 1100px){

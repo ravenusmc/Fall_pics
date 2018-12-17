@@ -9,7 +9,15 @@ export const store = new Vuex.Store({
     name: 'Weather Data',
     yearData: [],
     tempData: [],
-    count: 0
+    count: 0,
+    data: {
+         labels: [],
+         series: [
+             {
+                 data: []
+             }
+     ]
+   },
   },
   getters: {
     counter(state){
@@ -23,8 +31,11 @@ export const store = new Vuex.Store({
     setTempData(state, data){
       state.tempData = data
     },
-    increment(state, payload) {
-      state.count += payload;
+    setWeatherData(state, data){
+      state.data.labels = data
+    },
+    setGraphTempData(state, data){
+      state.data.series[0].data = data
     }
   },
   actions: {
@@ -38,6 +49,7 @@ export const store = new Vuex.Store({
             yearData.push(day)
           }
           commit('setYearData', yearData)
+          commit('setWeatherData', yearData)
         })
     },
     getTempData: ({commit}) => {
@@ -49,10 +61,8 @@ export const store = new Vuex.Store({
             tempData.push(day)
           }
           commit('setTempData', tempData)
+          commit('setGraphTempData', tempData)
         })
-    },
-    increment(state, payload){
-      state.commit('increment', payload)
     }
   }
 })
