@@ -1,18 +1,23 @@
 <template lang="html">
   <div>
 
+    <!-- Header area -->
     <div class='header'>
       <h1 class='center'>Gallery Page</h1>
     </div>
+    <!-- End of header area -->
 
+    <!-- Gallery Area -->
     <div class='gallery_area'>
       <div v-for="picture in pictures">
           <img class='gallery_images' :src="picture">
       </div>
     </div>
+    <!-- End of gallery area -->
 
     <hr>
 
+    <!-- Image search area -->
     <div class='image_search_div'>
       <h1 class='center'>Search Photo Area</h1>
       <input v-model='search' placeholder="Enter Search Term">
@@ -21,6 +26,7 @@
         <img class='seach_pic_image' :src='search_pic'>
       </div>
     </div>
+    <!-- End of image search area -->
 
   </div>
 </template>
@@ -115,7 +121,17 @@
 
   .search_pic_button {
     margin-top: 10px;
-    background-color: blue;
+    background-color: #3a5787;
+    border: #3a5787;
+    padding: 12px;
+    border-radius: 12px;
+    color: #d68419;
+  }
+
+  .search_pic_button:hover {
+    background-color: #d68419;
+    border: #d68419;
+    color: #3a5787;
   }
 
   @media only all and (max-width: 1100px){
