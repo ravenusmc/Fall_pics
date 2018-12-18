@@ -19,3 +19,16 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+### Operation
+
+
+# Issues / Other
+
+
+
+# Preview
+
+To see a video that talks about this project please go here: COMING SOON
+
+Blog entry: COMING SOON
