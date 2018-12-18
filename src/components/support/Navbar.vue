@@ -19,6 +19,9 @@
               <router-link class="nav-link" to="/weather">Weather Graph</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link" to="/api">Get Weather</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" to="/about">About</router-link>
             </li>
           </ul>
