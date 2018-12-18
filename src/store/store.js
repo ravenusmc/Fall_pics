@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as d3 from "d3";
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -9,6 +10,7 @@ export const store = new Vuex.Store({
     name: 'Weather Data',
     yearData: [],
     tempData: [],
+    localTemp: '',
     count: 0,
     data: {
          labels: [],
@@ -20,9 +22,6 @@ export const store = new Vuex.Store({
    },
   },
   getters: {
-    counter(state){
-      return state.count
-    }
   },
   mutations: {
     setYearData(state, data) {
@@ -36,6 +35,9 @@ export const store = new Vuex.Store({
     },
     setGraphTempData(state, data){
       state.data.series[0].data = data
+    },
+    setlocalTemp(state, data){
+      state.localTemp = data
     }
   },
   actions: {
@@ -63,6 +65,19 @@ export const store = new Vuex.Store({
           commit('setTempData', tempData)
           commit('setGraphTempData', tempData)
         })
+    },
+    getAPIData: ({commit}) => {
+      axios
+      .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=496ab03bf1b4438b3b6c1dbf5673442f')
+      .then(response =>{
+           this.events = response.data
+           let temp = this.events.main.temp;
+           console.log(temp)
+           commit('setlocalTemp', temp)
+      })
+      .catch(error => {
+            console.log('There was an error: ' + error.response)
+      })
     }
   }
 })
