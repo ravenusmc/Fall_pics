@@ -19,6 +19,11 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+### Technology Stack
+
+1. Vue 2
+2. HTML 5
+3. CSS 3 
 
 ### Operation
 
