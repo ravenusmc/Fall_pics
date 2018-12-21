@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import * as d3 from "d3";
 import axios from 'axios'
+import KEY from './key.js'
+
+
 
 Vue.use(Vuex);
 
@@ -10,7 +13,7 @@ export const store = new Vuex.Store({
     name: 'Weather Data',
     yearData: [],
     tempData: [],
-    localTemp: '',
+    weatherAPIData: [],
     count: 0,
     data: {
          labels: [],
@@ -36,8 +39,8 @@ export const store = new Vuex.Store({
     setGraphTempData(state, data){
       state.data.series[0].data = data
     },
-    setlocalTemp(state, data){
-      state.localTemp = data
+    setweatherAPIData(state, data){
+      state.weatherAPIData = data
     }
   },
   actions: {
@@ -68,12 +71,20 @@ export const store = new Vuex.Store({
     },
     getAPIData: ({commit}) => {
       axios
-      .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=496ab03bf1b4438b3b6c1dbf5673442f')
+      .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=' + KEY.KEY)
       .then(response =>{
-           this.events = response.data
-           let temp = this.events.main.temp;
-           console.log(temp)
-           commit('setlocalTemp', temp)
+          //This array will hold all of the weather data
+          const weatherData = []
+          this.events = response.data
+          let temp = this.events.main.temp;
+          weatherData.push(temp)
+          let humidity = this.events.main.humidity;
+          weatherData.push(humidity)
+          let pressure = this.events.main.pressure;
+          weatherData.push(pressure)
+          let weatherDescription = this.events.weather[0].main
+          weatherData.push(weatherDescription)
+          commit('setweatherAPIData', weatherData)
       })
       .catch(error => {
             console.log('There was an error: ' + error.response)
