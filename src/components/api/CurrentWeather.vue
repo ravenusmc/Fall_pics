@@ -1,26 +1,53 @@
 <template>
   <div>
-    <h1>Hello</h1>
-    <button @click="getAPIData">Get Weather</button>
+
+    <header>
+      <h1 class='center'>Local Weather Data</h1>
+      <!-- <button @click="getAPIData">Get Weather</button> -->
+      <button @click="showWeatherData">Get Weather</button>
+    </header>
+
+    <div v-if="show">
+      <h1>Hi</h1>
+      <ul>
+        <li v-for="t in test">{{ t }}</li>
+      </ul>
+    </div>
+
+
   </div>
 </template>
 
 <script>
   import axios from 'axios';
-  import { mapActions } from 'vuex';
+  import { mapState, mapActions } from 'vuex';
 
   const city = "atlanta";
   const url = "http://api.openweathermap.org/data/2.5/weather";
-  const apiKey = "496ab03bf1b4438b3b6c1dbf5673442f";
-  const getString = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=496ab03bf1b4438b3b6c1dbf5673442f"
+
 
   export default {
     name: 'CurrentWeather',
+    data() {
+      return {
+        show: false,
+        test: []
+      }
+    },
+    computed: {
+        ...mapState({
+          test: state=>state.weatherAPIData,
+       })
+    },
     methods: {
       ...mapActions([
         'getAPIData'
-      ])
-    },
+      ]),
+      showWeatherData() {
+        this.show = true
+        this.getAPIData
+      }
+    }
     // created(){
     //   axios
     //     .get('http://localhost:3000/events')
@@ -35,6 +62,18 @@
 </script>
 
 <style scoped>
+
+  .center {
+    text-align: center;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
 </style>
 
 

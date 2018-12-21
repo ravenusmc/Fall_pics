@@ -4,6 +4,7 @@ dist/
 npm-debug.log
 yarn-error.log
 src/components/gallery/test.js
+src/components/store/key.js
 
 
 # Editor directories and files
