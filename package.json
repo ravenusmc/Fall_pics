@@ -14,6 +14,7 @@
     "chartist": "^0.11.0",
     "chartist-plugin-tooltip": "0.0.11",
     "d3": "^5.7.0",
+    "delay": "^4.1.0",
     "pexels-api-wrapper": "^1.1.1",
     "v-chartist": "^0.1.6",
     "vue": "^2.5.11",

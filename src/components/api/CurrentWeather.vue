@@ -8,10 +8,9 @@
     </header>
 
     <div v-if="show">
-      <h1>Hi</h1>
-      <p>  </p>
+      {{ test[0] }}
       <ul>
-        <li v-for="t in test">{{ }}</li>
+        <li v-for="t in test">{{ t }}</li>
       </ul>
     </div>
 
@@ -49,8 +48,9 @@
       ]),
       showWeatherData() {
         this.show = true
-        this.$store.actions.getAPIData
-        console.log(this.$store.state.weatherAPIData)
+        this.$store.dispatch('getAPIData')
+        this.test = this.$store.state.weatherAPIData
+        console.log(this.test)
         return this.$store.getters.getweatherAPIDATA
       }
     }
