@@ -3,8 +3,6 @@ import Vuex from 'vuex';
 import * as d3 from "d3";
 import axios from 'axios'
 import KEY from './key.js'
-const delay = require('delay');
-
 
 Vue.use(Vuex);
 
@@ -76,16 +74,23 @@ export const store = new Vuex.Store({
       axios
       .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=' + KEY.KEY)
       .then(response =>{
-          delay(100)
           //This array will hold all of the weather data
           const weatherData = []
           this.events = response.data
           let temp = this.events.main.temp;
+          //Converting the temp to Kelvin
+          temp = (temp - 273.15) * (9/5) + 32
+          //Chopping off excess decimal points
+          temp = temp.toFixed(2)
+          //Pushing the temp into the weatherData array
           weatherData.push(temp)
+          //Getting the humidity
           let humidity = this.events.main.humidity;
           weatherData.push(humidity)
+          //Getting the pressure
           let pressure = this.events.main.pressure;
           weatherData.push(pressure)
+          //Getting the description of the weather.
           let weatherDescription = this.events.weather[0].main
           weatherData.push(weatherDescription)
           commit('setweatherAPIData', weatherData)

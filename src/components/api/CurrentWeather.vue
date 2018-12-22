@@ -3,15 +3,15 @@
 
     <header>
       <h1 class='center'>Local Weather Data</h1>
-      <!-- <button @click="getAPIData">Get Weather</button> -->
-      <button @click="showWeatherData">Get Weather</button>
+      <button class='search_pic_button' @click="showWeatherData">Get Weather</button>
     </header>
 
-    <div v-if="show">
-      {{ test[0] }}
-      <ul>
-        <li v-for="t in test">{{ t }}</li>
-      </ul>
+    <div class='Weather_Data' v-if="show">
+      <h3>Here are the results: </h3>
+      <h6>Local Temperature: {{ weatherData[0] }} F</h6>
+      <h6>Local Humidity: {{ weatherData[1] }}</h6>
+      <h6>Local Pressure: {{ weatherData[2] }}</h6>
+      <h6>Local Conditions: {{ weatherData[3] }}</h6>
     </div>
 
 
@@ -21,6 +21,7 @@
 <script>
   import axios from 'axios';
   import { mapState, mapActions, mapGetters } from 'vuex';
+  const delay = require('delay');
 
   const city = "atlanta";
   const url = "http://api.openweathermap.org/data/2.5/weather";
@@ -30,48 +31,56 @@
     name: 'CurrentWeather',
     data() {
       return {
-        show: false,
-        test: []
+        show: false
       }
     },
     computed: {
         ...mapState({
-          test: state=>state.weatherAPIData,
+          weatherData: state=>state.weatherAPIData,
        }),
        ...mapGetters([
          'getweatherAPIDATA'
        ])
-    },
-    methods: {
+    },//End of computed properties
+    methods: { //Start of methods
       ...mapActions([
         'getAPIData'
       ]),
       showWeatherData() {
-        this.show = true
         this.$store.dispatch('getAPIData')
-        this.test = this.$store.state.weatherAPIData
-        console.log(this.test)
-        return this.$store.getters.getweatherAPIDATA
+        delay(1000)
+        this.show = true
+        // this.weatherData = this.$store.state.weatherAPIData
+        // return this.$store.getters.getweatherAPIDATA
       }
-    }
-    // created(){
-    //   axios
-    //     .get('http://localhost:3000/events')
-    //     .then(response =>{
-    //       this.events = response.data
-    //     })
-    //     .catch(error => {
-    //       console.log('There was an error: ' + error.response)
-    //     })
-    // }
+    }//End of Methods
   }
+
 </script>
 
 <style scoped>
 
+  /* Generic CSS */
+  .search_pic_button {
+    margin-top: 10px;
+    background-color: #3a5787;
+    border: #3a5787;
+    padding: 12px;
+    border-radius: 12px;
+    color: #d68419;
+  }
+
+  .search_pic_button:hover {
+    background-color: #d68419;
+    border: #d68419;
+    color: #3a5787;
+  }
+
   .center {
     text-align: center;
   }
+
+  /* CSS for the main parts on the page */
 
   header {
     display: flex;
@@ -80,6 +89,15 @@
     align-items: center;
     margin-top: 50px;
   }
+
+  .Weather_Data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
 </style>
 
 
