@@ -70,9 +70,9 @@ export const store = new Vuex.Store({
           commit('setGraphTempData', tempData)
         })
     },
-    getAPIData: ({commit, state}) => {
+    getAPIData: ({commit, state}, payload) => {
       axios
-      .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=' + KEY.KEY)
+      .get('http://api.openweathermap.org/data/2.5/weather?zip='+ payload + ',us&appid=' + KEY.KEY)
       .then(response =>{
           //This array will hold all of the weather data
           const weatherData = []

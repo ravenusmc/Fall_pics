@@ -3,11 +3,13 @@
 
     <header>
       <h1 class='center'>Local Weather Data</h1>
-      <button class='search_pic_button' @click="showWeatherData">Get Weather</button>
+      <input v-model='search' placeholder="Please Enter Your Zip">
+      <button class='search_pic_button' @click="showWeatherData(search)">Get Weather</button>
     </header>
 
     <div class='Weather_Data' v-if="show">
       <h3>Here are the results: </h3>
+      <!-- Yes, should have done a for loop here but really did not want to change things up -->
       <h6>Local Temperature: {{ weatherData[0] }} F</h6>
       <h6>Local Humidity: {{ weatherData[1] }}</h6>
       <h6>Local Pressure: {{ weatherData[2] }}</h6>
@@ -31,7 +33,8 @@
     name: 'CurrentWeather',
     data() {
       return {
-        show: false
+        show: false,
+        search: ''
       }
     },
     computed: {
@@ -46,8 +49,8 @@
       ...mapActions([
         'getAPIData'
       ]),
-      showWeatherData() {
-        this.$store.dispatch('getAPIData')
+      showWeatherData(search) {
+        this.$store.dispatch('getAPIData', this.search)
         delay(1000)
         this.show = true
         // this.weatherData = this.$store.state.weatherAPIData
