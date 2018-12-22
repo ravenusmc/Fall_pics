@@ -9,8 +9,9 @@
 
     <div v-if="show">
       <h1>Hi</h1>
+      <p>  </p>
       <ul>
-        <li v-for="t in test">{{ t }}</li>
+        <li v-for="t in test">{{ }}</li>
       </ul>
     </div>
 
@@ -20,7 +21,7 @@
 
 <script>
   import axios from 'axios';
-  import { mapState, mapActions } from 'vuex';
+  import { mapState, mapActions, mapGetters } from 'vuex';
 
   const city = "atlanta";
   const url = "http://api.openweathermap.org/data/2.5/weather";
@@ -37,7 +38,10 @@
     computed: {
         ...mapState({
           test: state=>state.weatherAPIData,
-       })
+       }),
+       ...mapGetters([
+         'getweatherAPIDATA'
+       ])
     },
     methods: {
       ...mapActions([
@@ -45,7 +49,9 @@
       ]),
       showWeatherData() {
         this.show = true
-        this.getAPIData
+        this.$store.actions.getAPIData
+        console.log(this.$store.state.weatherAPIData)
+        return this.$store.getters.getweatherAPIDATA
       }
     }
     // created(){

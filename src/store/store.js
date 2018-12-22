@@ -25,6 +25,9 @@ export const store = new Vuex.Store({
    },
   },
   getters: {
+    getweatherAPIDATA: state => {
+      return state.weatherAPIData
+    }
   },
   mutations: {
     setYearData(state, data) {
@@ -69,7 +72,7 @@ export const store = new Vuex.Store({
           commit('setGraphTempData', tempData)
         })
     },
-    getAPIData: ({commit}) => {
+    getAPIData: ({commit, state}) => {
       axios
       .get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=' + KEY.KEY)
       .then(response =>{
