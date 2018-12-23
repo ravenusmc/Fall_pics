@@ -81,10 +81,10 @@ export default {
   .about_content_area {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 2em;
+    grid-gap: 1em;
     margin-bottom: 50px;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 
   /* .about_image {
