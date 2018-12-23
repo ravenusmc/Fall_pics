@@ -1,21 +1,24 @@
 <template>
-  <div>
+  <div class='main_div'>
 
-    <header>
-      <h1 class='center'>Local Weather Data</h1>
-      <input v-model='search' placeholder="Please Enter Your Zip">
-      <button class='search_pic_button' @click="showWeatherData(search)">Get Weather</button>
-    </header>
+    <div class='content'>
 
-    <div class='Weather_Data' v-if="show">
-      <h3>Here are the results: </h3>
-      <!-- Yes, should have done a for loop here but really did not want to change things up -->
-      <h6>Local Temperature: {{ weatherData[0] }} F</h6>
-      <h6>Local Humidity: {{ weatherData[1] }}</h6>
-      <h6>Local Pressure: {{ weatherData[2] }}</h6>
-      <h6>Local Conditions: {{ weatherData[3] }}</h6>
+      <header>
+        <h1 class='center'>Local Weather Data</h1>
+        <input v-model='search' placeholder="Please Enter Your Zip">
+        <button class='search_pic_button' @click="showWeatherData(search)">Get Weather</button>
+      </header>
+
+      <div class='Weather_Data' v-if="show">
+        <h3>Here are the results: </h3>
+        <!-- Yes, should have done a for loop here but really did not want to change things up -->
+        <h6>Local Temperature: {{ weatherData[0] }} F</h6>
+        <h6>Local Humidity: {{ weatherData[1] }}</h6>
+        <h6>Local Pressure: {{ weatherData[2] }}</h6>
+        <h6>Local Conditions: {{ weatherData[3] }}</h6>
+      </div>
+
     </div>
-
 
   </div>
 </template>
@@ -84,6 +87,18 @@
   }
 
   /* CSS for the main parts on the page */
+  .main_div {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+  }
 
   header {
     display: flex;
