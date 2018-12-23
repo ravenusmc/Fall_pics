@@ -10,7 +10,8 @@
     <!-- Start of content area -->
     <div class='about_content_area'>
 
-      <div class='about_image'>
+      <div class='pic_div'>
+        <img src='../../assets/img/Cuddy.jpg'>
       </div>
 
       <div class='bio_div'>
@@ -72,24 +73,36 @@ export default {
     margin-bottom: 50px;
   }
 
+  img {
+    border-radius: 10px;
+    width: 80%;
+  }
+
   .about_content_area {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 2em;
     margin-bottom: 50px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 
-  .about_image {
+  /* .about_image {
     background-image: url(../../assets/img/Cuddy.jpg);
     height: 475px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
+  } */
 
   @media only all and (max-width: 768px) {
+
+    .pic_div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     .about_content_area {
       grid-template-columns: 1fr;
